@@ -1,0 +1,51 @@
+<!doctype html>
+
+<html ng-app="students">
+<head>
+    <meta charset="utf-8">
+
+    <title>Users</title>
+
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.0.8/angular.min.js"></script>
+    <script src="core.js"></script>
+
+</head>
+
+<body ng-controller="startController">
+<div cless="container">
+    <div class="jumbotron text-center">
+        <h1>Users <span class="label">{{users.length}}</span></h1>
+        <div class="row">
+            <div class="col-sm-4 col-sm-offset-4">
+                <div ng-repeat="user in users">
+                    <div class="col-md-4">
+                        <span>{{user.name + " " + user.surname}}</span>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-default" ng-click="deleteUser(user._id)">Delete</button>
+                    </div>
+                    <div class="col-md-4">
+                        <button type="button" class="btn btn-default" ng-show="!showUpdate" ng-click="showUpdate = true">Update</button>
+                        <button type="button" class="btn btn-default" ng-show="showUpdate" ng-click="updateUser(user)">Save</button>
+                        <div>
+                            Name: <input type="text" ng-model="user.name">
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div>
+            Name: <input type="text" ng-model="newUser.name">
+            <br>
+            Surname: <input type="text" ng-model="newUser.surname">
+            <br>
+            Age: <input type="number" ng-model="newUser.age">
+        </div>
+        <button type="button" class="btn btn-default" ng-click="saveUser()">Save</button>
+    </div>
+
+</div>
+
+</body>
+</html>
